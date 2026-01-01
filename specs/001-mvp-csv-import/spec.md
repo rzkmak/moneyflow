@@ -75,6 +75,12 @@ As a user, I want to download a standard CSV template, fill it with cash or othe
 - **FR-009**: System MUST display a summary after upload: "X records imported, Y duplicates skipped".
 - **FR-010**: System MUST allow users to download the Standard CSV template.
 - **FR-011**: System MUST display the unified list of transactions sorted by date (newest first).
+- **FR-012**: For **PayPay CSV imports**, System MUST only include transactions where the "Transaction Type" field is either "Payment" or "Refund". All other transaction types MUST be ignored.
+- **FR-013**: System MUST provide a time range filter for the Dashboard view with the following features:
+  - Default value: Last 90 days from current date
+  - Calendar dropdown selector for custom date ranges
+  - Filter MUST affect all dashboard charts and statistics (monthly trends, category breakdown, source breakdown, merchant list)
+  - Filter MUST update dashboard data in real-time when changed
 
 ### Key Entities
 
@@ -108,7 +114,7 @@ As a user, I want to download a standard CSV template, fill it with cash or othe
 - ✅ SQLite database (`moneyflow.db`) already created
 - ✅ Repository pattern for CRUD operations
 - ✅ Base parser architecture with concrete parsers:
-  - `PayPayParser` - Handles UTF-8 PayPay CSVs
+  - `PayPayParser` - Handles UTF-8 PayPay CSVs with Transaction Type filtering (Payment/Refund only)
   - `SMBCParser` - Handles Shift-JIS (CP932) SMBC CSVs
 - ✅ API endpoints:
   - `POST /api/transactions/upload` - File upload with duplicate detection
@@ -116,6 +122,7 @@ As a user, I want to download a standard CSV template, fill it with cash or othe
   - `GET /api/transactions/template` - Download CSV template
 - ✅ Cryptographic hash-based duplicate prevention
 - ✅ Support for multiple data sources (PayPay Balance, Credit Cards)
+- ✅ FR-012: PayPay transaction type filtering (Payment/Refund only)
 
 **Frontend (React/Vite) - Phase 2: 100% Complete**
 - ✅ React/Vite setup with TypeScript

@@ -22,7 +22,11 @@
       "Bash(git rm:*)",
       "Bash(git commit:*)",
       "Bash(.specify/scripts/bash/check-prerequisites.sh:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(python:*)",
+      "Bash(PYTHONPATH=src pytest:*)",
+      "Bash(node:*)",
+      "Bash(npm run)"
     ]
   }
 }
