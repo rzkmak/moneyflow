@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { UploadSection } from './components/UploadSection';
 import { TransactionList } from './components/TransactionList';
-import { TemplateDownloader } from './components/TemplateDownloader';
 import Dashboard from './pages/Dashboard';
 
 function App() {
@@ -58,10 +57,7 @@ function App() {
                 <h2 className="text-lg font-medium text-gray-900 mb-4">
                   Upload CSV Files
                 </h2>
-                <div className="flex justify-between items-start mb-4">
-                  <UploadSection onUploadComplete={handleUploadComplete} />
-                  <TemplateDownloader />
-                </div>
+                <UploadSection onUploadComplete={handleUploadComplete} />
                 <div className="text-sm text-gray-500">
                   <p className="font-medium mb-1">Supported formats:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -69,6 +65,15 @@ function App() {
                     <li>SMBC CSV (Shift-JIS/CP932)</li>
                     <li>Standard Template CSV</li>
                   </ul>
+                  <p className="mt-2">
+                    <a
+                      href="/api/template"
+                      download="transactions_template.csv"
+                      className="text-blue-600 hover:text-blue-800 underline"
+                    >
+                      Download template for custom entries (cash, etc.)
+                    </a>
+                  </p>
                 </div>
               </div>
 
