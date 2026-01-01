@@ -1,0 +1,11 @@
+Date & Time,Amount Outgoing (Yen),Amount Incoming (Yen),Amount Outgoing Overseas,Currency,Exchange Rate (Yen),Country Paid In,Transaction Type,Business Name,Method,Payment Option,User,Transaction ID
+2025/11/30 10:30:00,1250,-,-,-,-,-,Payment,Supermarket,PayPay Balance,-,-,02128113000000000001
+2025/11/30 09:15:22,-,"5000",-,-,-,-,Top-Up,PayPay,PayPay銀行 ****1234,-,-,02128113000000000002
+2025/11/29 18:45:10,3800,-,-,-,-,-,Payment,Department Store,PayPay Balance,-,-,02128112900000000003
+2025/11/29 14:20:33,650,-,-,-,-,-,Payment,Restaurant,PayPay Balance,-,-,02128112900000000004
+2025/11/29 12:05:48,-,"2000",-,-,-,-,Top-Up,PayPay,PayPay銀行 ****5678,-,-,02128112900000000005
+2025/11/28 19:30:15,4200,-,-,-,-,-,Payment,Online Shop,PayPay Balance,-,-,02128112800000000006
+2025/11/28 16:45:22,890,-,-,-,-,-,Payment,Cafe,PayPay Balance,-,-,02128112800000000007
+2025/11/28 11:20:10,-,"3000",-,-,-,-,Top-Up,PayPay,PayPay銀行 ****9999,-,-,02128112800000000008
+2025/11/27 20:15:33,15600,-,-,-,-,-,Payment,Electronics Store,PayPay Balance,-,-,02128112700000000009
+2025/11/27 18:30:45,2800,-,-,-,-,-,Payment,Gas Station,PayPay Balance,-,-,02128112700000000010
