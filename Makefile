@@ -11,6 +11,8 @@ help:
 	@echo "Specification Phase:"
 	@echo "  complete-spec     - Complete the full specification workflow (Gemini → Plan → Notify)"
 	@echo "  notify-spec       - Notify Claude about completed specifications (run after Gemini CLI)"
+	@echo "  handoff-to-claude - Generate prompt to start implementation with Claude"
+	@echo "  handoff-to-gemini - Generate prompt to sync back with Gemini after implementation"
 	@echo ""
 	@echo "Implementation Phase:"
 	@echo "  impl              - Start implementation following the established workflow"
@@ -29,6 +31,13 @@ help:
 	@echo "Documentation:"
 	@echo "  docs              - Generate and open documentation"
 	@echo "  sync-docs         - Ensure documentation synchronization"
+
+# Handoff Workflow
+handoff-to-claude:
+	@bash scripts/handoff.sh to-claude
+
+handoff-to-gemini:
+	@bash scripts/handoff.sh to-gemini
 
 # Complete specification workflow
 # This would typically be called after using Gemini CLI to generate specs
