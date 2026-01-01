@@ -45,9 +45,6 @@ function App() {
                 </button>
               </nav>
             </div>
-            <div className="flex items-center space-x-4">
-              <TemplateDownloader />
-            </div>
           </div>
         </div>
       </header>
@@ -61,8 +58,11 @@ function App() {
                 <h2 className="text-lg font-medium text-gray-900 mb-4">
                   Upload CSV Files
                 </h2>
-                <UploadSection onUploadComplete={handleUploadComplete} />
-                <div className="mt-4 text-sm text-gray-500">
+                <div className="flex justify-between items-start mb-4">
+                  <UploadSection onUploadComplete={handleUploadComplete} />
+                  <TemplateDownloader />
+                </div>
+                <div className="text-sm text-gray-500">
                   <p className="font-medium mb-1">Supported formats:</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>PayPay CSV (UTF-8)</li>
