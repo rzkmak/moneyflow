@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 from typing import List
 from datetime import datetime
 from .models import Transaction, SourceType
+from .repositories import TransactionRepository
 
 class BaseParser(ABC):
     @abstractmethod
@@ -17,11 +18,16 @@ class PayPayParser(BaseParser):
         # PayPay is UTF-8
         # Force all columns to string to prevent ID conversion
         df = pd.read_csv(io.BytesIO(file_content), encoding='utf-8', dtype=str)
-        
+
         transactions = []
         for _, row in df.iterrows():
             # Skip invalid rows if necessary
             if pd.isna(row.get('Transaction ID')):
+                continue
+
+            # Only include Payment or Refund transaction types
+            transaction_type = row.get('Transaction Type', '')
+            if transaction_type not in ['Payment', 'Refund']:
                 continue
 
             # Parse Date
@@ -43,17 +49,17 @@ class PayPayParser(BaseParser):
                 # Remove commas
                 amount = int(str(outgoing).replace(',', ''))
             elif incoming != '-':
-                # Income is negative expense in our logic? Or separate? 
+                # Income is negative expense in our logic? Or separate?
                 # Spec: "positive for expense/outgoing, negative for income/refund"
                 amount = -1 * int(str(incoming).replace(',', ''))
-            
+
             # Merchant
             merchant = row.get('Business Name', '')
             description = row.get('Transaction Details', '')
-            
+
             # Source
             source = row.get('Method', 'PayPay')
-            
+
             # Hash
             # Use Transaction ID directly
             record_hash = str(row['Transaction ID'])
@@ -65,10 +71,14 @@ class PayPayParser(BaseParser):
                 description=description,
                 source=source,
                 source_type=SourceType.paypay,
-                record_hash=record_hash
+                record_hash=record_hash,
+                category="Uncategorized"  # Default category
             )
+
+            # Apply auto-categorization
+            # Note: This requires a database session, which will be handled in the API layer
             transactions.append(t)
-            
+
         return transactions
 
 class SMBCParser(BaseParser):
@@ -128,7 +138,8 @@ class SMBCParser(BaseParser):
                 description="Credit Card Payment",
                 source=source_name,
                 source_type=SourceType.smbc,
-                record_hash=record_hash
+                record_hash=record_hash,
+                category="Uncategorized"  # Default category
             )
             transactions.append(t)
             
