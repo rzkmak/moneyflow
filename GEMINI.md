@@ -4,6 +4,9 @@
 MoneyFlow is a full-stack personal finance tracker designed to aggregate financial transactions from various sources (PayPay, SMBC, manual entries). Beyond its functional purpose, it serves as a showcase for an **AI-first development workflow** utilizing Gemini, Claude, and Spec-kit.
 
 **Status:** MVP is 100% complete and fully functional.
+**Feature Status:**
+*   ✅ MVP (CSV Import, Deduplication)
+*   ✅ Expense Visualization & Auto-Categorization (Spec 002)
 
 ## Architecture & Tech Stack
 
@@ -15,7 +18,7 @@ MoneyFlow is a full-stack personal finance tracker designed to aggregate financi
 *   **Key Components:**
     *   `src/api/`: FastAPI routers and endpoints.
     *   `src/domain/`: Pydantic schemas for data validation.
-    *   `src/infrastructure/`: Database models, repository patterns, and specialized CSV parsers (PayPay, SMBC, Manual).
+    *   `src/infrastructure/`: Database models (`Transaction`, `CategoryRule`), repository patterns, and specialized CSV parsers.
     *   `src/core/`: Internal utility and configuration.
 
 ### Frontend (`/frontend`)
@@ -23,8 +26,10 @@ MoneyFlow is a full-stack personal finance tracker designed to aggregate financi
 *   **Language:** TypeScript
 *   **State Management:** TanStack Query (React Query)
 *   **Styling:** Tailwind CSS
+*   **Visualization:** Recharts
 *   **Key Components:**
-    *   `src/components/`: UI components (Upload, List, Downloader).
+    *   `src/components/Dashboard/`: Charts for spending trends and breakdown.
+    *   `src/components/TransactionList.tsx`: Transaction management with categorization UI.
     *   `src/api/`: API client and service layer.
 
 ### Specification & Workflow (`/specs`, `.specify`, `.claude`)

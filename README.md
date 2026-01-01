@@ -36,6 +36,8 @@ The MoneyFlow MVP has been fully implemented and is ready for use. Both backend 
 
 ### 🎯 Key Features
 - **Multi-Source CSV Import**: Import transactions from PayPay, SMBC Credit Cards, and manual CSV entries
+- **Smart Auto-Categorization**: Automatically categorizes transactions based on merchant names using custom rules
+- **Interactive Dashboard**: Visualizes spending trends, source breakdowns, and category distribution
 - **Automatic Deduplication**: Prevents duplicate transactions using SHA-256 hashing
 - **Encoding Support**: Handles both UTF-8 and Shift-JIS (Japanese) character encodings
 - **Real-time Feedback**: Upload progress tracking and status updates
