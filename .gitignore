@@ -38,3 +38,9 @@ dist/
 *.swp
 
 server.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+backend/moneyflow.db
