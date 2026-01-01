@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { UploadSection } from './components/UploadSection';
 import { TransactionList } from './components/TransactionList';
-import { TemplateDownloader } from './components/TemplateDownloader';
 import Dashboard from './pages/Dashboard';
 
 function App() {
@@ -45,9 +44,6 @@ function App() {
                 </button>
               </nav>
             </div>
-            <div className="flex items-center space-x-4">
-              <TemplateDownloader />
-            </div>
           </div>
         </div>
       </header>
@@ -62,13 +58,22 @@ function App() {
                   Upload CSV Files
                 </h2>
                 <UploadSection onUploadComplete={handleUploadComplete} />
-                <div className="mt-4 text-sm text-gray-500">
+                <div className="text-sm text-gray-500">
                   <p className="font-medium mb-1">Supported formats:</p>
                   <ul className="list-disc list-inside space-y-1">
                     <li>PayPay CSV (UTF-8)</li>
                     <li>SMBC CSV (Shift-JIS/CP932)</li>
                     <li>Standard Template CSV</li>
                   </ul>
+                  <p className="mt-2">
+                    <a
+                      href="/api/template"
+                      download="transactions_template.csv"
+                      className="text-blue-600 hover:text-blue-800 underline"
+                    >
+                      Download template for custom entries (cash, etc.)
+                    </a>
+                  </p>
                 </div>
               </div>
 
