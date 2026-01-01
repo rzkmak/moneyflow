@@ -253,6 +253,50 @@ npm install
 - Cloud storage integration
 - Budget tracking and alerts
 
+## Documentation Synchronization
+
+### Purpose
+To ensure consistent project context across different AI agents and for human developers, maintaining a single source of truth for project state.
+
+### Document Roles
+1.  **README.md:** Human-centric overview. Includes high-level project goals, setup instructions, and quick start guide.
+2.  **GEMINI.md:** Primary context for Gemini agent. Focuses on technical architecture, agent rules, and task-specific state.
+3.  **CLAUDE.md:** Primary context for Claude agent. Mirrors the technical architecture and "Constitution" principles from GEMINI.md.
+
+### Sync Process
+
+#### Step 1: Architecture/Dependency Changes
+When project architecture or major dependencies change:
+1.  Update **README.md** first (human-readable format)
+2.  Propagate technical changes to **GEMINI.md**
+3.  Mirror **GEMINI.md** in **CLAUDE.md**
+
+#### Step 2: Constitution/Principles Updates
+When project constitution or engineering principles change:
+1.  Update in **GEMINI.md** (primary source)
+2.  Mirror exactly in **CLAUDE.md**
+3.  Summarize key changes in **README.md**
+
+#### Step 3: Agent Interaction Guidelines
+- Keep **Agent Interaction Guidelines** identical across both agent-specific files
+- Update both GEMINI.md and CLAUDE.md simultaneously for guideline changes
+
+#### Step 4: README Creation/Updates
+If README.md doesn't exist:
+1.  Create comprehensive README with:
+    - Project overview and goals
+    - Tech stack overview
+    - Setup instructions
+    - Development workflow
+    - Key commands
+2.  Extract technical details for GEMINI.md and CLAUDE.md from README
+
+### Best Practices
+- Use README.md as the entry point for new developers
+- Keep GEMINI.md and CLAUDE.md technically precise
+- Review all three documents quarterly for consistency
+- Update documentation after major milestones or architectural changes
+
 ## 📚 Additional Resources
 
 - Complete Documentation: `specs/001-mvp-csv-import/README.md`
