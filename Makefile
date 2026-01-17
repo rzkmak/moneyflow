@@ -9,10 +9,11 @@ help:
 	@echo "=============================="
 	@echo ""
 	@echo "Specification Phase:"
-	@echo "  complete-spec     - Complete the full specification workflow (Gemini → Plan → Notify)"
-	@echo "  notify-spec       - Notify Claude about completed specifications (run after Gemini CLI)"
+	@echo "  sync-specs        - Catch up with current specifications (Antigravity)"
+	@echo "  complete-spec     - Complete the full specification workflow (Spec-kit)"
+	@echo "  notify-spec       - Notify Claude about completed specifications"
 	@echo "  handoff-to-claude - Generate prompt to start implementation with Claude"
-	@echo "  handoff-to-gemini - Generate prompt to sync back with Gemini after implementation"
+	@echo "  handoff-to-antigravity - Generate prompt to sync back with Antigravity"
 	@echo ""
 	@echo "Implementation Phase:"
 	@echo "  impl              - Start implementation following the established workflow"
@@ -33,14 +34,22 @@ help:
 	@echo "  sync-docs         - Ensure documentation synchronization"
 
 # Handoff Workflow
+sync-specs:
+	@echo "Syncing with current specifications..."
+	@echo "This will help you catch up with the current project state."
+	@echo ""
+	@find specs -maxdepth 1 -type d -name '[0-9]*' | sort -V
+	@echo ""
+	@echo "Use the /sync-with-specs workflow in Antigravity for detailed sync."
+
 handoff-to-claude:
 	@bash scripts/handoff.sh to-claude
 
-handoff-to-gemini:
-	@bash scripts/handoff.sh to-gemini
+handoff-to-antigravity:
+	@bash scripts/handoff.sh to-antigravity
 
 # Complete specification workflow
-# This would typically be called after using Gemini CLI to generate specs
+# This would typically be called after using Spec-kit to generate specs
 complete-spec:
 	@echo "Completing specification workflow..."
 	@echo ""
@@ -50,7 +59,7 @@ complete-spec:
 	@echo "2. Verifying specifications exist..."
 	@if [ ! -d "specs" ] || [ -z "$(find specs -maxdepth 1 -type d -name '[0-9]*' 2>/dev/null | head -1)" ]; then \
 		echo "ERROR: No specification directories found in specs/"; \
-		echo "Run Gemini CLI first to generate specifications"; \
+		echo "Run Spec-kit first to generate specifications"; \
 		exit 1; \
 	else \
 		echo "✓ Found specification directories"; \
@@ -236,7 +245,8 @@ docs:
 	@echo "Available documentation:"
 	@echo "  - README.md: Project overview and setup"
 	@echo "  - CLAUDE.md: Claude Code guidance"
-	@echo "  - GEMINI.md: Gemini agent context"
+	@echo "  - .agent/ANTIGRAVITY.md: Antigravity agent context"
+	@echo "  - .agent/workflows/: Workflow definitions"
 	@echo "  - specs/: Feature specifications"
 	@echo ""
 	@echo "To open documentation:"
@@ -250,7 +260,7 @@ sync-docs:
 	@echo "Ensuring documentation synchronization..."
 	@echo ""
 	@echo "Checking documentation consistency..."
-	@if [ -f "README.md" ] && [ -f "GEMINI.md" ] && [ -f "CLAUDE.md" ]; then \
+	@if [ -f "README.md" ] && [ -f ".agent/ANTIGRAVITY.md" ] && [ -f "CLAUDE.md" ]; then \
 		echo "✓ All documentation files present"; \
 	else \
 		echo "WARNING: Missing documentation files"; \
