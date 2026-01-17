@@ -8,9 +8,11 @@ This project serves as a learning platform to demonstrate how to effectively uti
 
 ### AI Tools Utilized
 
-1. **Gemini CLI** (for spec-kit analysis)
-   - Used for analyzing and structuring specification documents
-   - Helps break down complex requirements into actionable tasks
+1. **Antigravity** (for planning and verification)
+   - Used for analyzing and structuring project requirements
+   - Reviews and validates specification documents
+   - Verifies implementations with browser-based UI testing
+   - Coordinates handoffs between different development phases
 
 2. **Spec-kit** (for specification documentation)
    - Comprehensive specification system for project planning
@@ -25,10 +27,11 @@ This project serves as a learning platform to demonstrate how to effectively uti
 ### Development Workflow
 
 This project demonstrates a collaborative AI-assisted development approach:
-1. **Specification Phase**: Use Gemini CLI to analyze and create detailed specs
-2. **Planning Phase**: Use Spec-kit to generate implementation plans and task lists
+1. **Planning Phase**: Use Antigravity to analyze requirements and create initial plans
+2. **Specification Phase**: Use Spec-kit to generate detailed specs and implementation plans
 3. **Implementation Phase**: Use Claude Code with strict protocol for safe, controlled development
-4. **Quality Assurance**: Continuous verification against specifications and requirements
+4. **Verification Phase**: Use Antigravity to verify implementations (code review + UI testing with browser)
+5. **Quality Assurance**: Continuous verification against specifications and requirements
 
 ## ✅ Status: MVP Implementation Complete
 
